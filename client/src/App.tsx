@@ -1,13 +1,13 @@
-import '../styles/styles.css';
-import Image from './images/logo.png';
-import SVG from './images/logo.svg';
+import "../styles/styles.css";
+import Image from "./images/logo.png";
+import SVG from "./images/logo.svg";
 
 const App = () => {
   return (
     <>
       <h1>
-        React TypeScript Webpack with Docker - {process.env.NODE_ENV}{' '}
-        {process.env.name}{' '}
+        React TypeScript Webpack with Docker - {process.env.NODE_ENV}{" "}
+        {process.env.name}{" "}
       </h1>
       <img src={Image} alt="React Logo" width="300" height="300" />
       <img src={SVG} alt="React Logo" width="300" />
