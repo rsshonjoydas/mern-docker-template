@@ -37,7 +37,9 @@ module.exports = {
     path: path.resolve(__dirname, "..", "./build"),
     filename: "bundle.js",
   },
-  mode: 'development',
+  devServer: {
+    historyApiFallback: true
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "..", "./public/index.html"),
