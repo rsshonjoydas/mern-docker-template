@@ -1,17 +1,32 @@
-import "../styles/styles.css";
-import Image from "./images/logo.png";
-import SVG from "./images/logo.svg";
+import {
+  BrowserRouter as Router,
+  Route,
+  RouteComponentProps,
+  Switch,
+} from "react-router-dom";
+import Layout from "./layout";
+import routes from "./routers";
 
-const App = () => {
+export interface IAppProps {}
+
+const App: React.FunctionComponent<IAppProps> = () => {
   return (
-    <>
-      <h1>
-        React TypeScript Webpack with Docker - {process.env.NODE_ENV}{" "}
-        {process.env.name}{" "}
-      </h1>
-      <img src={Image} alt="React Logo" width="300" height="300" />
-      <img src={SVG} alt="React Logo" width="300" />
-    </>
+    <Router>
+      <Layout>
+        <Switch>
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              render={(routeProps: RouteComponentProps<any>) => {
+                return <route.component {...routeProps} />;
+              }}
+            />
+          ))}
+        </Switch>
+      </Layout>
+    </Router>
   );
 };
 
