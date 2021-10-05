@@ -1,5 +1,5 @@
 import Footer from "./Footer";
-import NavBar from "./NavBar";
+import NavBar from "./Navbar/NavBar";
 
 const index = ({ children }: any) => (
   <div className="container">

@@ -1,15 +1,15 @@
 %flex-layout {
   width: 100%;
-  display: flex;
-  align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   text-transform: uppercase;
   font-weight: bold;
 }
 
+// ? navbar styles
 .navbar {
   @extend %flex-layout;
+  display: flex;
   padding: $base-padding $base-padding * 2;
   box-shadow: $base-box-shadow;
   .site-title {
@@ -18,6 +18,10 @@
   .container {
     @extend %flex-layout;
   }
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 }
 
 @each $key, $val in $colors {
@@ -25,4 +29,46 @@
     @extend .navbar;
     background-color: $val;
   }
+}
+
+//? drawer style
+.drawer {
+  @extend %flex-layout;
+  padding: $base-padding $base-padding * 2;
+  box-shadow: $base-box-shadow;
+  .container {
+    @extend %flex-layout;
+  }
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.drawer-icon {
+  font-size: 2rem;
+  background: none;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.drawer-menu {
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: all 2s;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.drawer-menu.active {
+  left: 0;
+  transition: 500ms;
 }

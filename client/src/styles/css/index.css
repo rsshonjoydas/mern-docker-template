@@ -32,10 +32,12 @@ ul {
   color: #808080;
 }
 
-.navbar .container, .navbar {
+.bg-white {
+  background-color: white;
+}
+
+.drawer .container, .drawer, .navbar .container, .navbar {
   width: 100%;
-  display: flex;
-  align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   text-transform: uppercase;
@@ -43,15 +45,69 @@ ul {
 }
 
 .navbar {
+  display: flex;
   padding: 1rem 2rem;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
 .navbar .site-title {
   font-size: 1.5rem;
 }
+@media screen and (max-width: 1024px) {
+  .navbar {
+    display: none;
+  }
+}
+
+.drawer {
+  padding: 1rem 2rem;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+@media screen and (min-width: 1024px) {
+  .drawer {
+    display: none;
+  }
+}
+
+.drawer-icon {
+  font-size: 2rem;
+  background: none;
+}
+@media screen and (min-width: 1024px) {
+  .drawer-icon {
+    display: none;
+  }
+}
+
+.drawer-menu {
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: all 2s;
+}
+@media screen and (min-width: 1024px) {
+  .drawer-menu {
+    display: none;
+  }
+}
+
+.drawer-menu.active {
+  left: 0;
+  transition: 500ms;
+}
+
+.pt-1 {
+  padding-top: 1rem;
+}
 
 .ml-1 {
   margin-left: 0.75rem;
+}
+
+.mt-2 {
+  margin-top: 1.5rem;
 }
 
 .display-f {
