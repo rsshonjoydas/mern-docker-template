@@ -7,10 +7,53 @@
   font-family: Poppins;
 }
 
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.link {
+  text-decoration: none;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
+}
+
+.text-hover-secondary:hover {
+  color: indigo;
+}
+
+.text-gray {
+  color: #808080;
+}
+
+.navbar .container, .navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.navbar {
+  padding: 1rem 2rem;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.navbar .site-title {
+  font-size: 1.5rem;
+}
+
+.ml-1 {
+  margin-left: 0.75rem;
+}
+
+.display-f {
+  display: flex;
 }
