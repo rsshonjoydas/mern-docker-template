@@ -1,4 +1,4 @@
-import Footer from "./Footer";
+import Footer from "./Footer/Footer";
 import NavBar from "./Navbar/NavBar";
 
 const index = ({ children }: any) => (
