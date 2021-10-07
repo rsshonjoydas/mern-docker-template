@@ -130,6 +130,8 @@ hr {
   top: 0;
   left: -100%;
   transition: all 2s;
+  background-color: #fff;
+  z-index: 2;
 }
 @media screen and (min-width: 1024px) {
   .drawer-menu {
@@ -269,6 +271,10 @@ hr {
 
 .mb-2 {
   margin-bottom: 1.5rem;
+}
+
+.br {
+  border-radius: 20px;
 }
 
 .display-f {
