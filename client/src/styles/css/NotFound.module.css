@@ -1,5 +1,11 @@
+.notFound {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  background: #695681;
+}
+
 .wrapper {
-  margin-top: 30px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr;
