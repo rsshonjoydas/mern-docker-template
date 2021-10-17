@@ -4,7 +4,8 @@ import {
   RouteComponentProps,
   Switch,
 } from "react-router-dom";
-import Layout from "./layout";
+import ClientLayout from "./layout/ClientLayout";
+import ServerLayout from "./layout/ServerLayout";
 import routes from "./routers";
 
 export interface IAppProps {}
@@ -12,20 +13,34 @@ export interface IAppProps {}
 const App: React.FunctionComponent<IAppProps> = () => {
   return (
     <Router>
-      <Layout>
-        <Switch>
-          {routes.map((route, index) => (
+      <Switch>
+        {routes.map((route, index) => {
+          return (
             <Route
               key={index}
               path={route.path}
               exact={route.exact}
               render={(routeProps: RouteComponentProps<any>) => {
-                return <route.component {...routeProps} />;
+                if (route.protected === true) {
+                  return (
+                    <ServerLayout name={""}>
+                      <route.component {...routeProps} />
+                    </ServerLayout>
+                  );
+                } else if (route.protected === false) {
+                  return (
+                    <ClientLayout name={""}>
+                      <route.component {...routeProps} />
+                    </ClientLayout>
+                  );
+                } else {
+                  return <route.component {...routeProps} />;
+                }
               }}
             />
-          ))}
-        </Switch>
-      </Layout>
+          );
+        })}
+      </Switch>
     </Router>
   );
 };

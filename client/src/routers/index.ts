@@ -31,7 +31,6 @@ const routes: IRoute[] = [
     exact: true,
     component: NotFound,
     name: "NotFound Page",
-    protected: false,
   },
 ];
 

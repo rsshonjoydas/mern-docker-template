@@ -1,7 +1,7 @@
 import Footer from "./Footer/Footer";
 import NavBar from "./Navbar/NavBar";
 
-const index = ({ children }: any) => (
+const ClientLayout = ({ children }: any) => (
   <div className="container">
     <NavBar name={""} />
     <div>{children}</div>
@@ -9,4 +9,4 @@ const index = ({ children }: any) => (
   </div>
 );
 
-export default index;
+export default ClientLayout;
