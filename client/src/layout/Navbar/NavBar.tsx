@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import IPageProps from "../../interfaces/page";
-import MobileDrawer from "./MobileDrawer";
+import MobileNavbar from "./MobileNavbar";
 import menuItems from "./navbar.data";
 
 const NavBar: React.FunctionComponent<IPageProps> = () => {
@@ -22,7 +22,7 @@ const NavBar: React.FunctionComponent<IPageProps> = () => {
           ))}
         </ul>
       </nav>
-      <MobileDrawer />
+      <MobileNavbar />
     </>
   );
 };

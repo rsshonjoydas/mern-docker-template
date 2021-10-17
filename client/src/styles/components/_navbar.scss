@@ -75,7 +75,8 @@
   transition: 500ms;
 }
 
-.l-navbar {
+// ? sidebar style
+.sidebar {
   top: 0;
   left: 0;
   height: 100vh;
@@ -111,5 +112,9 @@
         background-color: #0c5df4;
       }
     }
+  }
+
+  @media screen and (max-width: 1024px) {
+    display: none;
   }
 }
