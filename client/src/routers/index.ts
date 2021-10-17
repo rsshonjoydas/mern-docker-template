@@ -1,8 +1,9 @@
 import IRoute from "../interfaces/route";
 import Home from "../pages";
-import Dashboard from "../pages/Dashboard";
+import Dashboard from "../pages/dashboard";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
+import Setting from "../pages/Setting";
 
 const routes: IRoute[] = [
   {
@@ -23,6 +24,13 @@ const routes: IRoute[] = [
     path: "/dashboard",
     exact: true,
     component: Dashboard,
+    name: "Dashboard Page",
+    protected: true,
+  },
+  {
+    path: "/dashboard/settings",
+    exact: true,
+    component: Setting,
     name: "Dashboard Page",
     protected: true,
   },

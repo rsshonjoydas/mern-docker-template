@@ -3,25 +3,25 @@ import Setting from "../../pages/Setting";
 export default [
   {
     id: 1,
-    path: "",
+    path: "/dashboard/",
     icon: "fas fa-home",
     label: "Dashboard",
   },
   {
     id: 2,
-    path: "messenger",
+    path: "/dashboard/messenger",
     icon: "fas fa-comments",
     label: "Messenger",
   },
   {
     id: 3,
-    path: "project",
+    path: "/dashboard/project",
     icon: "fas fa-folder",
     label: "Project",
   },
   {
     id: 4,
-    path: "analytics",
+    path: "/dashboard/analytics",
     icon: "fas fa-chart-pie",
     label: "Analytics",
   },
@@ -33,7 +33,7 @@ export default [
   },
   {
     id: 6,
-    path: "settings",
+    path: "/dashboard/settings",
     icon: "fas fa-cog",
     label: "Setting",
     component: Setting,
