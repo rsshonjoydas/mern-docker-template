@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import MobileSidebar from "./MobileSidebar";
 import menuItems from "./sidebar.data";
 
 const SideBar = () => {
@@ -23,6 +24,7 @@ const SideBar = () => {
           </ul>
         </nav>
       </div>
+      <MobileSidebar />
     </>
   );
 };

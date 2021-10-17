@@ -2,9 +2,8 @@ import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import menuItems from "./navbar.data";
 
-const MobileDrawer = () => {
+const Drawer = ({ children }: any) => {
   const [drawer, setDrawer] = useState(false);
 
   const showDrawer = () => setDrawer(!drawer);
@@ -23,20 +22,7 @@ const MobileDrawer = () => {
         }
       >
         <ul className="drawer display-f" onClick={showDrawer}>
-          <span>
-            {menuItems.map((menuItem, index) => {
-              return (
-                <li key={index} className="nav-text pt-1">
-                  <Link
-                    to={menuItem.path}
-                    className="link text-gray text-hover-secondary"
-                  >
-                    <span>{menuItem.label}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </span>
+          <span>{children}</span>
           <span>
             <Link to="#" className="drawer-icon">
               <AiOutlineClose className="text-gray text-hover-secondary" />
@@ -48,4 +34,4 @@ const MobileDrawer = () => {
   );
 };
 
-export default MobileDrawer;
+export default Drawer;
