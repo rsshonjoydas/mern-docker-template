@@ -21,6 +21,10 @@ hr {
   border-top: 1px dotted #efefef;
 }
 
+.error {
+  color: #d32752;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
