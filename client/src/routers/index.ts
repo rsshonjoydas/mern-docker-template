@@ -18,7 +18,7 @@ const routes: IRoute[] = [
     exact: true,
     component: Login,
     name: "Login Page",
-    protected: false,
+    // protected: false,
   },
   {
     path: "/dashboard",

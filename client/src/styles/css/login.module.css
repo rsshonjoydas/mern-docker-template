@@ -1,0 +1,94 @@
+.loginContainer {
+  margin-bottom: 330;
+  padding: 0;
+  background: linear-gradient(#141e30, #243b55);
+}
+
+.loginForm {
+  margin: 350px 0;
+}
+
+.socialText {
+  padding: 0.7rem 0;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.loginBox {
+  position: absolute;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.loginBox h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.loginBox .userBox {
+  position: relative;
+}
+
+.loginBox .userBox input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.loginBox .userBox .label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.loginBox .userBox input:focus ~ label,
+.loginBox .userBox input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+
+.smallText {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.link {
+  padding: 20px;
+  text-align: center;
+}
+
+.link a,
+label {
+  text-decoration: none;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.or {
+  font-size: 12px;
+  color: rgb(211, 209, 209);
+}
+
+.signupText {
+  color: #03e9f4 !important;
+}
