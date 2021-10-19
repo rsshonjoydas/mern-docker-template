@@ -1,4 +1,5 @@
 import ForgetPassword from "../components/auth/ForgetPassword/ForgetPassword";
+import NewPassword from "../components/auth/ForgetPassword/NewPassword";
 import IRoute from "../interfaces/route";
 import Home from "../pages";
 import Dashboard from "../pages/dashboard";
@@ -33,6 +34,13 @@ const routes: IRoute[] = [
     path: "/forget-password",
     exact: true,
     component: ForgetPassword,
+    name: "Login Page",
+    // protected: false,
+  },
+  {
+    path: "/new-password",
+    exact: true,
+    component: NewPassword,
     name: "Login Page",
     // protected: false,
   },
