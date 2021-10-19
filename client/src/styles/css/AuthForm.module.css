@@ -92,3 +92,58 @@ label {
   color: #03e9f4;
   font-size: 12px;
 }
+
+/* //? Secondary Form Styles */
+
+.secondaryForm {
+  width: 450px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.secondaryForm input[type="email"],
+.secondaryForm input[type="password"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 230px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+.secondaryForm input[type="email"]:focus,
+.secondaryForm input[type="password"]:focus {
+  width: 280px;
+  border-color: #2ecc71;
+}
+.secondaryForm input[type="submit"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 30px;
+  transition: 0.25s;
+  cursor: pointer;
+  font-size: 16px;
+}
+.secondaryForm input[type="submit"]:hover {
+  background-color: #2ecc71;
+}
