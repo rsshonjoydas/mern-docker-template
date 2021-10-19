@@ -2,7 +2,7 @@ import { Form, Formik } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import Button from "../../../components/button/AuthBtn";
-import classes from "../../../styles/css/login.module.css";
+import classes from "../../../styles/css/AuthForm.module.css";
 import FormikControl from "../../forms/FormikControl";
 import SocialAuth from "../social/SocialAuth";
 
@@ -40,9 +40,8 @@ const SingUpForm = () => {
   };
 
   return (
-    <section className={classes.loginForm}>
-      <div className={classes.loginBox}>
-        <h2>Sign Up</h2>
+    <div className={classes.form}>
+      <div className={classes.primaryForm}>
         <Formik
           initialValues={initialValues}
           validationSchema={SignUpSchema}
@@ -51,6 +50,7 @@ const SingUpForm = () => {
           {/* //? input box */}
           {(formik) => (
             <Form>
+              <h2 className={classes.formTitle}>Sign Up</h2>
               <div className={classes.userBox}>
                 <FormikControl
                   control="input"
@@ -72,7 +72,7 @@ const SingUpForm = () => {
               <div className={classes.userBox}>
                 <FormikControl
                   control="input"
-                  placeholder="email"
+                  placeholder="Email"
                   type="email"
                   name="email"
                   required
@@ -97,10 +97,6 @@ const SingUpForm = () => {
                 />
               </div>
               <div className={classes.link}>
-                {/*//? forget password */}
-                <Link className={classes.smallText} to="{#}">
-                  Forget your password?
-                </Link>
                 {/* //? social sign up login */}
                 <p className={classes.socialText}>
                   Or Sign Up with social platforms
@@ -123,7 +119,7 @@ const SingUpForm = () => {
           )}
         </Formik>
       </div>
-    </section>
+    </div>
   );
 };
 

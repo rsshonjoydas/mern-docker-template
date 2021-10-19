@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import classes from "../../../styles/css/login.module.css";
+import classes from "../../../styles/css/AuthForm.module.css";
 import Button from "../../button/AuthBtn";
 import FormikControl from "../../forms/FormikControl";
 import SocialAuth from "../social/SocialAuth";
@@ -23,9 +23,8 @@ const LoginForm = () => {
     console.log("Form data", values);
   };
   return (
-    <section className={classes.loginForm}>
-      <div className={classes.loginBox}>
-        <h2>Login</h2>
+    <div className={classes.form}>
+      <div className={classes.primaryForm}>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -34,6 +33,7 @@ const LoginForm = () => {
           {/* //? input box */}
           {(formik) => (
             <Form>
+              <h2 className={classes.formTitle}>Login</h2>
               <div className={classes.userBox}>
                 <FormikControl
                   control="input"
@@ -54,7 +54,7 @@ const LoginForm = () => {
               </div>
               <div className={classes.link}>
                 {/*//? forget password */}
-                <Link className={classes.smallText} to="{#}">
+                <Link className={classes.smallText} to="/forget-password">
                   Forget your password?
                 </Link>
                 {/* //? social sign up login */}
@@ -79,7 +79,7 @@ const LoginForm = () => {
           )}
         </Formik>
       </div>
-    </section>
+    </div>
   );
 };
 
