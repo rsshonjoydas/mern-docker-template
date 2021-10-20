@@ -1,20 +1,25 @@
+// TODO: External imports
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+// TODO: Internal imports
 import IPageProps from "../../../interfaces/page";
 import classes from "../../../styles/css/AuthForm.module.css";
 import FormikControl from "../../forms/FormikControl";
 
+// TODO: Formik initial value
+const initialValues = {
+  email: "",
+};
+
+// TODO: Formik validation schema
+const validationSchema = Yup.object({
+  email: Yup.string()
+    .email("Invalid email format!")
+    .required("The email is required"),
+});
+
+// TODO: React Functional Component
 const ForgetPassword: React.FunctionComponent<IPageProps> = () => {
-  const initialValues = {
-    email: "",
-  };
-
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .email("Invalid email format!")
-      .required("The email is required"),
-  });
-
   const onSubmit = (values: any) => {
     console.log("Form data", values);
   };

@@ -1,9 +1,12 @@
+// TODO: External imports
 import { useState } from "react";
+// TODO: Internal imports
 import IPageProps from "../../../interfaces/page";
 import classes from "../../../styles/css/AuthForm.module.css";
 import btnStyle from "../../../styles/css/Button.module.css";
 import Button from "../../button/Button";
 
+// TODO: React Functional Component
 const OTPForm: React.FunctionComponent<IPageProps> = () => {
   const [otp, setOtp] = useState(new Array(4).fill(""));
 
@@ -12,7 +15,7 @@ const OTPForm: React.FunctionComponent<IPageProps> = () => {
 
     setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
 
-    //Focus next input
+    // * Focus next input
     if (element.nextSibling) {
       element.nextSibling.focus();
     }
@@ -42,7 +45,7 @@ const OTPForm: React.FunctionComponent<IPageProps> = () => {
             );
           })}
 
-          <p className="mt-1">OTP Entered - {otp.join("")}</p>
+          <p className="mt-1 text-gray">OTP Entered - {otp.join("")}</p>
           <div className="display-f">
             <Button
               className={btnStyle.secondaryBtn}

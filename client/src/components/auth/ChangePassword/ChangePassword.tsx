@@ -1,9 +1,18 @@
+// TODO: External imports
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+// TODO: Internal imports
 import IPageProps from "../../../interfaces/page";
 import classes from "../../../styles/css/AuthForm.module.css";
 import FormikControl from "../../forms/FormikControl";
 
+// TODO: Formik initial value
+const initialValues = {
+  password: "",
+  confirmPassword: "",
+};
+
+// TODO: Formik validation schema
 const validationSchema = Yup.object({
   oldPassword: Yup.string().required("The old password is required."),
   newPassword: Yup.string()
@@ -14,12 +23,8 @@ const validationSchema = Yup.object({
     .required("You need to confirm your password."),
 });
 
+// TODO: React Functional Component
 const ChangePassword: React.FunctionComponent<IPageProps> = () => {
-  const initialValues = {
-    password: "",
-    confirmPassword: "",
-  };
-
   const onSubmit = (values: any) => {
     console.log("Form data", values);
   };

@@ -1,12 +1,24 @@
+// TODO: External imports
 import { Form, Formik } from "formik";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+// TODO: Internal imports
 import Button from "../../../components/button/AuthBtn";
 import classes from "../../../styles/css/AuthForm.module.css";
 import FormikControl from "../../forms/FormikControl";
 import SocialAuth from "../social/SocialAuth";
 
+// TODO: Formik initial value
+const initialValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+
+// TODO: Formik validation schema
 const SignUpSchema = Yup.object().shape({
   firstName: Yup.string()
     .required("Your first name is required.")
@@ -27,6 +39,7 @@ const SignUpSchema = Yup.object().shape({
     .required("You need to confirm your password."),
 });
 
+// TODO: React Functional Component
 const SingUpForm = () => {
   const [passwordShow, setPasswordShow] = useState(false);
   const [confirmPasswordShow, setConfirmPasswordShow] = useState(false);
@@ -36,14 +49,6 @@ const SingUpForm = () => {
   };
   const toggleConfirmPassword = () => {
     setConfirmPasswordShow(!confirmPasswordShow);
-  };
-
-  const initialValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
   };
 
   const onSubmit = (values: any) => {

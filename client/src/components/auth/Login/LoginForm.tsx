@@ -1,12 +1,29 @@
+// TODO: External imports
 import { Form, Formik } from "formik";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+// TODO: Internal imports
 import classes from "../../../styles/css/AuthForm.module.css";
 import Button from "../../button/AuthBtn";
 import FormikControl from "../../forms/FormikControl";
 import SocialAuth from "../social/SocialAuth";
 
+// TODO: Formik initial value
+const initialValues = {
+  email: "",
+  password: "",
+};
+
+// TODO: Formik validation schema
+const validationSchema = Yup.object({
+  email: Yup.string()
+    .email("Invalid email format!")
+    .required("The email is required."),
+  password: Yup.string().required("The password is required."),
+});
+
+// TODO: React Functional Component
 const LoginForm = () => {
   const [passwordShow, setPasswordShow] = useState(false);
 
@@ -14,21 +31,10 @@ const LoginForm = () => {
     setPasswordShow(!passwordShow);
   };
 
-  const initialValues = {
-    email: "",
-    password: "",
-  };
-
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .email("Invalid email format!")
-      .required("The email is required."),
-    password: Yup.string().required("The password is required."),
-  });
-
   const onSubmit = (values: any) => {
     console.log("Form data", values);
   };
+
   return (
     <div className={classes.form}>
       <div className={classes.primaryForm}>
