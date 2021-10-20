@@ -1,4 +1,5 @@
 import { Form, Formik } from "formik";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import classes from "../../../styles/css/AuthForm.module.css";
@@ -7,6 +8,12 @@ import FormikControl from "../../forms/FormikControl";
 import SocialAuth from "../social/SocialAuth";
 
 const LoginForm = () => {
+  const [passwordShow, setPasswordShow] = useState(false);
+
+  const togglePassword = () => {
+    setPasswordShow(!passwordShow);
+  };
+
   const initialValues = {
     email: "",
     password: "",
@@ -40,17 +47,26 @@ const LoginForm = () => {
                   placeholder="Email"
                   type="text"
                   name="email"
-                  required
                 />
               </div>
-              <div className={classes.userBox}>
+              <div className={`display-f ${classes.userBox}`}>
                 <FormikControl
                   control="input"
                   placeholder="Password"
-                  type="password"
+                  type={passwordShow ? "text" : "password"}
                   name="password"
-                  required
                 />
+                <button
+                  type="button"
+                  onClick={togglePassword}
+                  className={classes.passwordToggleIcon}
+                >
+                  {passwordShow ? (
+                    <i className="fas fa-eye-slash" />
+                  ) : (
+                    <i className="fas fa-eye"></i>
+                  )}
+                </button>
               </div>
               <div className={classes.link}>
                 {/*//? forget password */}

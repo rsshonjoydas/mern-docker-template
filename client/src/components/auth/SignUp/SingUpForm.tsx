@@ -1,4 +1,5 @@
 import { Form, Formik } from "formik";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import Button from "../../../components/button/AuthBtn";
@@ -27,6 +28,16 @@ const SignUpSchema = Yup.object().shape({
 });
 
 const SingUpForm = () => {
+  const [passwordShow, setPasswordShow] = useState(false);
+  const [confirmPasswordShow, setConfirmPasswordShow] = useState(false);
+
+  const togglePassword = () => {
+    setPasswordShow(!passwordShow);
+  };
+  const toggleConfirmPassword = () => {
+    setConfirmPasswordShow(!confirmPasswordShow);
+  };
+
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -57,7 +68,6 @@ const SingUpForm = () => {
                   placeholder="First Name"
                   type="text"
                   name="firstName"
-                  required
                 />
               </div>
               <div className={classes.userBox}>
@@ -66,7 +76,6 @@ const SingUpForm = () => {
                   placeholder="Last Name"
                   type="text"
                   name="lastName"
-                  required
                 />
               </div>
               <div className={classes.userBox}>
@@ -75,27 +84,52 @@ const SingUpForm = () => {
                   placeholder="Email"
                   type="email"
                   name="email"
-                  required
                 />
               </div>
-              <div className={classes.userBox}>
+              {/* //? Password Field */}
+              <div className={`display-f ${classes.userBox}`}>
                 <FormikControl
                   control="input"
                   placeholder="Password"
-                  type="password"
+                  type={passwordShow ? "text" : "password"}
                   name="password"
-                  required
                 />
+
+                <button
+                  type="button"
+                  onClick={togglePassword}
+                  className={classes.passwordToggleIcon}
+                >
+                  {passwordShow ? (
+                    <i className="fas fa-eye-slash" />
+                  ) : (
+                    <i className="fas fa-eye"></i>
+                  )}
+                </button>
               </div>
+
+              {/* //? Confirm Password Field */}
               <div className={classes.userBox}>
                 <FormikControl
                   control="input"
                   placeholder="Confirm Password"
-                  type="password"
+                  type={confirmPasswordShow ? "text" : "password"}
                   name="confirmPassword"
-                  required
                 />
+
+                <button
+                  type="button"
+                  onClick={toggleConfirmPassword}
+                  className={classes.passwordToggleIcon}
+                >
+                  {confirmPasswordShow ? (
+                    <i className="fas fa-eye-slash" />
+                  ) : (
+                    <i className="fas fa-eye"></i>
+                  )}
+                </button>
               </div>
+
               <div className={classes.link}>
                 {/* //? social sign up login */}
                 <p className={classes.socialText}>

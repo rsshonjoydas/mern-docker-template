@@ -155,3 +155,15 @@ label {
   padding-left: 12px;
   height: 40px;
 }
+
+/* ? Password Toggle Icon */
+.passwordToggleIcon {
+  background: none;
+  border: none;
+  color: #aaa;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 1000;
+  cursor: pointer;
+}
