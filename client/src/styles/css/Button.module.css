@@ -1,0 +1,94 @@
+/* ? Common Button Styles */
+.frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.customBtn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+/* ? Primary Button Styles */
+.primaryBtn {
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  background: rgb(0, 132, 255);
+  background: linear-gradient(0deg, rgb(0, 132, 255) 0%, rgb(2, 160, 251) 100%);
+}
+.primaryBtn:hover {
+  color: #4285f4;
+  background: transparent;
+  box-shadow: none;
+}
+.primaryBtn:before,
+.primaryBtn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #4285f4;
+  box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003,
+    4px 4px 5px 0px #0002;
+  transition: 400ms ease all;
+}
+.primaryBtn:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+.primaryBtn:hover:before,
+.primaryBtn:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+
+/* ? Secondary Button Styles */
+.secondaryBtn {
+  border: none;
+  color: #000;
+}
+.secondaryBtn:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.secondaryBtn:hover {
+  color: #000;
+}
+.secondaryBtn:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+.secondaryBtn:active {
+  top: 2px;
+}

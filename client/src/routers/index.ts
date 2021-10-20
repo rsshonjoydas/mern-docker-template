@@ -1,6 +1,7 @@
 import ChangePassword from "../components/auth/ChangePassword/ChangePassword";
 import ForgetPassword from "../components/auth/ForgetPassword/ForgetPassword";
 import NewPassword from "../components/auth/ForgetPassword/NewPassword";
+import OTPForm from "../components/auth/OTPForm/OTPForm";
 import IRoute from "../interfaces/route";
 import Home from "../pages";
 import Dashboard from "../pages/dashboard";
@@ -28,6 +29,13 @@ const routes: IRoute[] = [
     path: "/signup",
     exact: true,
     component: SignUp,
+    name: "Login Page",
+    // protected: false,
+  },
+  {
+    path: "/signup/otp-verify",
+    exact: true,
+    component: OTPForm,
     name: "Login Page",
     // protected: false,
   },
