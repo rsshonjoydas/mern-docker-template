@@ -2,10 +2,10 @@
 
 $grid-columns: 12;
 $grid-gaps: (
-  '0': 0,
-  '1': 10px,
-  '2': 20px,
-  '3': 30px,
+  "0": 0,
+  "1": 10px,
+  "2": 20px,
+  "3": 30px,
 );
 $layout-values: flex-start, flex-end, center, space-between, space-around;
 
@@ -37,6 +37,12 @@ $layout-values: flex-start, flex-end, center, space-between, space-around;
 @each $val in $layout-values {
   .justify-#{$val} {
     justify-content: $val;
+  }
+}
+//? justify content classes
+@each $val in $layout-values {
+  .text-#{$val} {
+    text-align: $val;
   }
 }
 
