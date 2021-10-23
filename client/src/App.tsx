@@ -7,6 +7,7 @@ import {
 import ClientLayout from "./layout/ClientLayout";
 import ServerLayout from "./layout/ServerLayout";
 import routes from "./routers";
+import PrivateRoute from "./routers/PrivateRoute";
 
 export interface IAppProps {}
 
@@ -23,9 +24,11 @@ const App: React.FunctionComponent<IAppProps> = () => {
               render={(routeProps: RouteComponentProps<any>) => {
                 if (route.protected === true) {
                   return (
-                    <ServerLayout name={""}>
-                      <route.component {...routeProps} />
-                    </ServerLayout>
+                    <PrivateRoute>
+                      <ServerLayout name={""}>
+                        <route.component {...routeProps} />
+                      </ServerLayout>
+                    </PrivateRoute>
                   );
                 } else if (route.protected === false) {
                   return (

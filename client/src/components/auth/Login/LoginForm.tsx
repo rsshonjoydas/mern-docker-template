@@ -2,6 +2,7 @@
 import { Form, Formik } from "formik";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import * as actions from "../../../redux/actions";
@@ -29,18 +30,30 @@ const validationSchema = Yup.object({
 const LoginForm = ({ login, loading, error, cleanUp }: any) => {
   const [passwordShow, setPasswordShow] = useState(false);
 
+  //* private route
+  const history = useHistory();
+  const location = useLocation();
+  const { from }: any = location.state || { from: { pathname: "/dashboard" } };
+
+  // * clean up useEffect
   useEffect(() => {
     return () => {
       cleanUp();
     };
   }, [cleanUp]);
 
+  // * show and hide password toggle function
   const togglePassword = () => {
     setPasswordShow(!passwordShow);
   };
 
-  const onSubmit = (values: any) => {
-    console.log("Form data", values);
+  // * form submit function
+  const onSubmit = async (values: any, { setSubmitting, redirect }: any) => {
+    await login(values);
+    setSubmitting(false);
+    if (!redirect) {
+      history.replace(from);
+    }
   };
 
   return (
@@ -49,11 +62,7 @@ const LoginForm = ({ login, loading, error, cleanUp }: any) => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          // onSubmit={onSubmit}
-          onSubmit={async (values, { setSubmitting }) => {
-            await login(values);
-            setSubmitting(false);
-          }}
+          onSubmit={onSubmit}
         >
           {/* //? input box */}
           {({ isSubmitting, isValid }) => (

@@ -2,6 +2,7 @@
 import { Form, Formik } from "formik";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 // TODO: Internal imports
@@ -46,17 +47,33 @@ const SingUpForm = ({ signUp, loading, error, cleanUp }: any) => {
   const [passwordShow, setPasswordShow] = useState(false);
   const [confirmPasswordShow, setConfirmPasswordShow] = useState(false);
 
+  //* private route
+  const history = useHistory();
+  const location = useLocation();
+  const { from }: any = location.state || { from: { pathname: "/login" } };
+
+  // * clean up useEffect
   useEffect(() => {
     return () => {
       cleanUp();
     };
   }, [cleanUp]);
 
+  // * show and hide password toggle function
   const togglePassword = () => {
     setPasswordShow(!passwordShow);
   };
   const toggleConfirmPassword = () => {
     setConfirmPasswordShow(!confirmPasswordShow);
+  };
+
+  // * form submit function
+  const onSubmit = async (values: any, { setSubmitting, redirect }: any) => {
+    await signUp(values);
+    setSubmitting(false);
+    if (!redirect) {
+      history.replace(from);
+    }
   };
 
   return (
@@ -66,10 +83,7 @@ const SingUpForm = ({ signUp, loading, error, cleanUp }: any) => {
           <Formik
             initialValues={initialValues}
             validationSchema={SignUpSchema}
-            onSubmit={async (values, { setSubmitting }) => {
-              await signUp(values);
-              setSubmitting(false);
-            }}
+            onSubmit={onSubmit}
           >
             {/* //? input box */}
             {({ isSubmitting, isValid }) => (
