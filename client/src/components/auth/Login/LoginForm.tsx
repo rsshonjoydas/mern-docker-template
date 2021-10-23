@@ -1,8 +1,10 @@
 // TODO: External imports
 import { Form, Formik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import * as actions from "../../../redux/actions";
 // TODO: Internal imports
 import classes from "../../../styles/css/AuthForm.module.css";
 import Button from "../../button/AuthBtn";
@@ -24,8 +26,14 @@ const validationSchema = Yup.object({
 });
 
 // TODO: React Functional Component
-const LoginForm = () => {
+const LoginForm = ({ login, loading, error, cleanUp }: any) => {
   const [passwordShow, setPasswordShow] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      cleanUp();
+    };
+  }, [cleanUp]);
 
   const togglePassword = () => {
     setPasswordShow(!passwordShow);
@@ -41,10 +49,14 @@ const LoginForm = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={onSubmit}
+          // onSubmit={onSubmit}
+          onSubmit={async (values, { setSubmitting }) => {
+            await login(values);
+            setSubmitting(false);
+          }}
         >
           {/* //? input box */}
-          {(formik) => (
+          {({ isSubmitting, isValid }) => (
             <Form>
               <h2 className={classes.formTitle}>Login</h2>
               <div className={classes.userBox}>
@@ -94,7 +106,11 @@ const LoginForm = () => {
                 </Link>
               </div>
               {/* //? submit button */}
-              <Button type="submit">
+              <Button
+                type="submit"
+                disabled={!isValid || isSubmitting}
+                loading={loading ? "Logging in..." : null}
+              >
                 <span>Submit</span>
               </Button>
             </Form>
@@ -105,4 +121,14 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+const mapStateToProps = ({ auth }: any) => ({
+  loading: auth.loading,
+  error: auth.error,
+});
+
+const mapDispatchToProps = {
+  login: actions.SignIn,
+  cleanUp: actions.clean,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

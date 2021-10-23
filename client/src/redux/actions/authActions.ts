@@ -1,4 +1,8 @@
-import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import auth from "../../firebase/firebase";
 import * as actions from "../actionTypes/authActionType";
 
@@ -25,6 +29,20 @@ export const SignOut = () => async () => {
     console.log(err.message);
   }
 };
+
+// TODO: Login action creator
+export const SignIn =
+  ({ email, password }: any) =>
+  async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
+    dispatch({ type: actions.AUTH_START });
+    try {
+      signInWithEmailAndPassword(auth, email, password);
+      dispatch({ type: actions.AUTH_SUCCESS });
+    } catch (err) {
+      dispatch({ type: actions.AUTH_FAIL, payload: err.message });
+    }
+    dispatch({ type: actions.AUTH_END });
+  };
 
 // TODO: Clean up messages
 export const clean = () => ({
