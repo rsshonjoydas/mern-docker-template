@@ -3,6 +3,8 @@
   display: inline-block;
   padding: 10px 100px 30px 20px;
   color: #03e9f4;
+  background: none;
+  border: none;
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
@@ -16,6 +18,7 @@
 .submit:hover {
   background: #03e9f4;
   color: #fff;
+  border: none;
   border-radius: 5px;
   box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
     0 0 100px #03e9f4;
