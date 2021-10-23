@@ -1,3 +1,4 @@
+import LogOut from "../../components/auth/LogOut";
 import Setting from "../../pages/Setting";
 
 export default [
@@ -40,8 +41,9 @@ export default [
   },
   {
     id: 7,
-    path: "logout",
+    path: "",
     icon: "fas fa-sign-out-alt",
     label: "Log Out",
+    component: LogOut,
   },
 ];

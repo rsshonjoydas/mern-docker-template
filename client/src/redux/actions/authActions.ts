@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import auth from "../../firebase/firebase";
 import * as actions from "../actionTypes/authActionType";
 
@@ -16,6 +16,15 @@ export const SignUp =
     }
     dispatch({ type: actions.AUTH_END });
   };
+
+// TODO: Logout action creator
+export const SignOut = () => async () => {
+  try {
+    signOut(auth);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
 
 // TODO: Clean up messages
 export const clean = () => ({
