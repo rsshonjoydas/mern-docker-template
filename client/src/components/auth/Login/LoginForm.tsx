@@ -1,8 +1,11 @@
 // TODO: External imports
 import { Form, Formik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import * as actions from "../../../redux/actions";
 // TODO: Internal imports
 import classes from "../../../styles/css/AuthForm.module.css";
 import Button from "../../button/AuthBtn";
@@ -24,15 +27,33 @@ const validationSchema = Yup.object({
 });
 
 // TODO: React Functional Component
-const LoginForm = () => {
+const LoginForm = ({ login, loading, error, cleanUp }: any) => {
   const [passwordShow, setPasswordShow] = useState(false);
 
+  //* private route
+  const history = useHistory();
+  const location = useLocation();
+  const { from }: any = location.state || { from: { pathname: "/dashboard" } };
+
+  // * clean up useEffect
+  useEffect(() => {
+    return () => {
+      cleanUp();
+    };
+  }, [cleanUp]);
+
+  // * show and hide password toggle function
   const togglePassword = () => {
     setPasswordShow(!passwordShow);
   };
 
-  const onSubmit = (values: any) => {
-    console.log("Form data", values);
+  // * form submit function
+  const onSubmit = async (values: any, { setSubmitting, redirect }: any) => {
+    await login(values);
+    setSubmitting(false);
+    if (!redirect) {
+      history.replace(from);
+    }
   };
 
   return (
@@ -44,7 +65,7 @@ const LoginForm = () => {
           onSubmit={onSubmit}
         >
           {/* //? input box */}
-          {(formik) => (
+          {({ isSubmitting, isValid }) => (
             <Form>
               <h2 className={classes.formTitle}>Login</h2>
               <div className={classes.userBox}>
@@ -94,7 +115,11 @@ const LoginForm = () => {
                 </Link>
               </div>
               {/* //? submit button */}
-              <Button type="submit">
+              <Button
+                type="submit"
+                disabled={!isValid || isSubmitting}
+                loading={loading ? "Logging in..." : null}
+              >
                 <span>Submit</span>
               </Button>
             </Form>
@@ -105,4 +130,14 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+const mapStateToProps = ({ auth }: any) => ({
+  loading: auth.loading,
+  error: auth.error,
+});
+
+const mapDispatchToProps = {
+  login: actions.SignIn,
+  cleanUp: actions.clean,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
